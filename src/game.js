@@ -6,8 +6,7 @@ let game = {
   canvas: null,
   ctx: null,
   fps: 60,
-  frameCounterA: 0,
-  frameCounterB: 0,
+  frameCounter: 0,
   ballArray: [],
   collisionArray: [],
   keys: {
@@ -32,26 +31,25 @@ const init = () => {
   game.canvas.height = game.height;
 };
 
-let movA = [20,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500,500]
-let i = 0;
-let movB = [300,60,60,300,60,60,300,60,60,300,60,60,300,60,60,300,60,60,300,60,60,300,60,60]
-let j = 0;
 const start = () => {
   createCollisions(game);
   controls();
   game.idInterval = setInterval(() => {
     clear(game);
-    game.frameCounterA++;
-    if (game.frameCounterA % movA[i] === 0) {
+    game.frameCounter++;
+    if (game.frameCounter % 400 === 0) {
       generateBallA(game);
-      game.frameCounterA = 0;
-      i++;
     }
-    game.frameCounterB++;
-    if (game.frameCounterB % movB[j] === 0) {
-      generateBallB(game);
-      game.frameCounterB = 0;
-      j++;
+    
+      if (game.frameCounter % 60 === 0) {
+        generateBallB(game);
+      }
+      if (game.frameCounter % 120 === 0) {
+        generateBallB(game);
+      }
+      if (game.frameCounter % 180 === 0) {
+        generateBallB(game);
+      
     }
     moveAll(game);
     drawAll(game);
@@ -108,14 +106,14 @@ const controls = () => {
 const createCollisions = ({ collisionArray, width, height }) => {
   let newCollisionA = {
     collisionX: width / 4,
-    collisionY: (height/4)*3,
-    collisionRadio: 50,
+    collisionY: (height / 4) * 3,
+    collisionRadio: 30,
     color: "#cc641e"
   };
   let newCollisionB = {
     collisionX: (width / 4) * 3,
-    collisionY:  (height/4)*3,
-    collisionRadio: 50,
+    collisionY: (height / 4) * 3,
+    collisionRadio: 30,
     color: "#00441b"
   };
   collisionArray.push(newCollisionA);
@@ -133,7 +131,7 @@ const generateBallA = ({ width }) => {
     ballX: width / 4,
     ballY: 50,
     ballRadius: 20,
-    vy: 1.2,
+    vy: 0.9,
     index,
     color: "#cc641e"
   };
@@ -146,7 +144,7 @@ const generateBallB = ({ width }) => {
     ballX: (width / 4) * 3,
     ballY: 50,
     ballRadius: 20,
-    vy: 1.2,
+    vy: 0.9,
     index,
     color: "#00441b"
   };
