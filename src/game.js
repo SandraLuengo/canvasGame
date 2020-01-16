@@ -50,7 +50,7 @@ const start = () => {
 };
 
 const controls = () => {
-  if (isMobile) {
+  if (!isMobile) {
     document.onkeydown = e => {
       if (e.keyCode === 39) {
         if (isCollisionRight(game)) {
@@ -72,8 +72,27 @@ const controls = () => {
     };
   } else {
     document.ontouchstart = e => {
-      console.log('toco')
-    }
+      if (e.touches[0].clientX > 0 && e.touches[0].clientX < game.width / 2) {
+        if (isCollisionLeft(game)) {
+          game.point++;
+          document.getElementById("point").innerHTML = game.point;
+        } else {
+          game.fail++;
+          document.getElementById("fail").innerHTML = game.fail;
+        }
+      } else if (
+        e.touches[0].clientX > game.width / 2 &&
+        e.touches[0].clientX < game.width
+      ) {
+        if (isCollisionRight(game)) {
+          game.point++;
+          document.getElementById("point").innerHTML = game.point;
+        } else {
+          game.fail++;
+          document.getElementById("fail").innerHTML = game.fail;
+        }
+      }
+    };
   }
 };
 const createCollisions = ({ collisionArray, width }) => {
