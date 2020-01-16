@@ -109,13 +109,13 @@ const createCollisions = ({ collisionArray, width, height }) => {
   let newCollisionA = {
     collisionX: width / 4,
     collisionY: (height/4)*3,
-    collisionRadio: 30,
+    collisionRadio: 50,
     color: "#cc641e"
   };
   let newCollisionB = {
     collisionX: (width / 4) * 3,
     collisionY:  (height/4)*3,
-    collisionRadio: 30,
+    collisionRadio: 50,
     color: "#00441b"
   };
   collisionArray.push(newCollisionA);
