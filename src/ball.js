@@ -17,7 +17,7 @@ const generateBallA = ({ width }) => {
     ballX: width / 4,
     ballY: 50,
     ballRadius: 20,
-    vy: 0.9,
+    vy: 3,
     index,
     color: "#cc641e"
   };
@@ -30,7 +30,7 @@ const generateBallB = ({ width }) => {
     ballX: (width / 4) * 3,
     ballY: 50,
     ballRadius: 20,
-    vy: 0.9,
+    vy: 3,
     index,
     color: "#00441b"
   };
