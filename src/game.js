@@ -12,7 +12,9 @@ let game = {
   },
   point: 0,
   fail: 0,
-  isMobile: true
+  isMobile: true,
+  vertical: false,
+  horizontal: true
 };
 
 const init = () => {
@@ -34,7 +36,7 @@ let level1B = [1, 0, 0, 0, 0];
 let level2B = [1, 0, 0, 1, 0];
 let level2A = [0, 1, 1, 0, 1];
 
-let levelVert = [1,0,1,1,1,0]
+let levelVert = [1, 0, 1, 1, 1, 0];
 let i = 0;
 let j = 0;
 
@@ -44,28 +46,48 @@ const start = () => {
   game.idInterval = setInterval(() => {
     clear(game);
     game.frameCounter++;
-    if (game.frameCounter % 20 === 0) {
-      if (levelVert[j] === 1) {
-        generateBallA(game);
-      }
-      j++;
-      if (j === levelVert.length) {
-        j = 0;
-      }
+    if (game.vertical) {
+      gameVertical();
+    } else if (game.horizontal) {
+      gameHorizontal();
     }
-   /*  if (game.frameCounter % 40 === 0) {
-      if (level2A[i] === 1) {
-        generateBallB(game);
-      }
-      i++;
-      if (i === level2A.length) {
-        i = 0;
-      }
-    } */
     moveAll(game);
     drawAll(game);
     clearObstacles(game);
   }, 1000 / game.fps);
+};
+
+const gameVertical = () => {
+  if (game.frameCounter % 20 === 0) {
+    if (levelVert[j] === 1) {
+      generateBallA(game);
+    }
+    j++;
+    if (j === levelVert.length) {
+      j = 0;
+    }
+  }
+};
+
+const gameHorizontal = () => {
+  if (game.frameCounter % 20 === 0) {
+    if (level2B[j] === 1) {
+      generateBallA(game);
+    }
+    j++;
+    if (j === level2B.length) {
+      j = 0;
+    }
+  }
+  if (game.frameCounter % 40 === 0) {
+    if (level2A[i] === 1) {
+      generateBallB(game);
+    }
+    i++;
+    if (i === level2A.length) {
+      i = 0;
+    }
+  }
 };
 const mobileControls = () => {
   document.ontouchstart = e => {
