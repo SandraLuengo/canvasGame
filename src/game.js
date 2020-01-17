@@ -27,11 +27,14 @@ const init = () => {
   game.canvas.height = game.height;
 };
 let index = 0;
+
 let level1A = [0, 1, 1, 1, 0];
 let level1B = [1, 0, 0, 0, 0];
 
 let level2B = [1, 0, 0, 1, 0];
 let level2A = [0, 1, 1, 0, 1];
+
+let levelVert = [1,0,1,1,1,0]
 let i = 0;
 let j = 0;
 
@@ -41,17 +44,16 @@ const start = () => {
   game.idInterval = setInterval(() => {
     clear(game);
     game.frameCounter++;
-    if (game.frameCounter % 40 === 0) {
-      console.log(level2B[j]);
-      if (level2B[j] === 1) {
+    if (game.frameCounter % 20 === 0) {
+      if (levelVert[j] === 1) {
         generateBallA(game);
       }
       j++;
-      if (j === level2B.length) {
+      if (j === levelVert.length) {
         j = 0;
       }
     }
-    if (game.frameCounter % 40 === 0) {
+   /*  if (game.frameCounter % 40 === 0) {
       if (level2A[i] === 1) {
         generateBallB(game);
       }
@@ -59,7 +61,7 @@ const start = () => {
       if (i === level2A.length) {
         i = 0;
       }
-    }
+    } */
     moveAll(game);
     drawAll(game);
     clearObstacles(game);
