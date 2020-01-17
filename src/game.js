@@ -12,10 +12,9 @@ let game = {
   },
   point: 0,
   fail: 0,
-  isMobile: false
+  isMobile: true
 };
 
-let index = 0;
 
 const init = () => {
   game = {
@@ -28,18 +27,28 @@ const init = () => {
   game.canvas.width = game.width;
   game.canvas.height = game.height;
 };
-
+let index=0;
+let i = 0;
+let level1A = [0,1,1,1,0,0,1,1,1,0,0,1,1,1,0,0,1,1,1,0,0,1,1,1,0,0,0];
+let j = 0;
+let level1B = [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]
 const start = () => {
   controls(game);
   createCollisions(game);
   game.idInterval = setInterval(() => {
     clear(game);
     game.frameCounter++;
-    if (game.frameCounter % 400 === 0) {
-      generateBallA(game);
+    if (game.frameCounter % 60 === 0) {
+      if(level1B[j]===1){
+        generateBallA(game);
+      }
+      j++;
     }
     if (game.frameCounter % 60 === 0) {
-      generateBallB(game);
+      if(level1A[i]===1){
+        generateBallB(game);
+      }
+      i++;
     }
     moveAll(game);
     drawAll(game);
