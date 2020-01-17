@@ -38,13 +38,13 @@ const start = () => {
   game.idInterval = setInterval(() => {
     clear(game);
     game.frameCounter++;
-    if (game.frameCounter % 60 === 0) {
+    if (game.frameCounter % 30 === 0) {
       if(level1B[j]===1){
         generateBallA(game);
       }
       j++;
     }
-    if (game.frameCounter % 60 === 0) {
+    if (game.frameCounter % 30 === 0) {
       if(level1A[i]===1){
         generateBallB(game);
       }
