@@ -68,46 +68,18 @@ const mobileControls = () => {
   document.ontouchstart = e => {
     if (e.touches[0].clientX > 0 && e.touches[0].clientX < game.width / 2) {
       if (isCollisionLeft(game)) {
-        game.point++;
-        document.getElementById("point").innerHTML = game.point;
-        document.querySelector(".pointLeft").innerHTML = "Ole!";
-        document.querySelector(".pointLeft").style.color = "black";
-        document.querySelector(".pointLeft").style.opacity = "1";
-        setTimeout(() => {
-          document.querySelector(".pointLeft").style.opacity = "0";
-        }, 500);
+        pointLeft();
       } else {
-        game.fail++;
-        document.querySelector(".pointLeft").innerHTML = "Wrong!";
-        document.querySelector(".pointLeft").style.color = "red";
-        document.querySelector(".pointLeft").style.opacity = "1";
-        setTimeout(() => {
-          document.querySelector(".pointLeft").style.opacity = "0";
-        }, 500);
-        document.getElementById("fail").innerHTML = game.fail;
+        failureLeft();
       }
     } else if (
       e.touches[0].clientX > game.width / 2 &&
       e.touches[0].clientX < game.width
     ) {
       if (isCollisionRight(game)) {
-        game.point++;
-        document.getElementById("point").innerHTML = game.point;
-        document.querySelector(".pointRight").innerHTML = "Perfect!";
-        document.querySelector(".pointRight").style.color = "black";
-        document.querySelector(".pointRight").style.opacity = "1";
-        setTimeout(() => {
-          document.querySelector(".pointRight").style.opacity = "0";
-        }, 500);
+        pointRight();
       } else {
-        game.fail++;
-        document.querySelector(".pointRight").innerHTML = "Ups!";
-        document.querySelector(".pointRight").style.color = "red";
-        document.querySelector(".pointRight").style.opacity = "1";
-        setTimeout(() => {
-          document.querySelector(".pointRight").style.opacity = "0";
-        }, 500);
-        document.getElementById("fail").innerHTML = game.fail;
+        failureRight();
       }
     }
   };
@@ -117,19 +89,15 @@ const desktopControls = (LEFT_KEY, RIGHT_KEY) => {
   document.onkeydown = e => {
     if (e.keyCode === RIGHT_KEY) {
       if (isCollisionRight(game)) {
-        game.point++;
-        document.getElementById("point").innerHTML = game.point;
+        pointRight();
       } else {
-        game.fail++;
-        document.getElementById("fail").innerHTML = game.fail;
+        failureRight();
       }
     } else if (e.keyCode === LEFT_KEY) {
       if (isCollisionLeft(game)) {
-        game.point++;
-        document.getElementById("point").innerHTML = game.point;
+        pointLeft();
       } else {
-        game.fail++;
-        document.getElementById("fail").innerHTML = game.fail;
+        failureLeft();
       }
     }
   };
@@ -149,6 +117,7 @@ const stop = () => {
 
 const drawAll = ({ ballArray, collisionArray }) => {
   let ctx = game.ctx;
+  let frameCounter = game.frameCounter;
   ballArray.map(ball => drawBall(ctx, ball));
   collisionArray.map(collision => drawCollision(ctx, collision));
 };

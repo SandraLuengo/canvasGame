@@ -8,10 +8,10 @@ const levels = [
   (level1 = {
     level1Left: [1, 0, 0, 0, 0],
     vLeft: 3,
-    fpsLeft: 40,
+    fpsLeft: 60,
     level1Right: [0, 1, 1, 1, 0],
     vRight: 3,
-    fpsRight: 40
+    fpsRight: 60
   }),
   (level2 = {
     level1Left: [1, 0, 0, 1, 0],
