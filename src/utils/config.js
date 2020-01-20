@@ -14,9 +14,9 @@ let game = {
   },
   point: 0,
   fail: 0,
-  isMobile: false,
-  vertical: false,
-  horizontal: true,
+  isMobile: true,
+  vertical: true,
+  horizontal: false,
   level: 0
 };
 
