@@ -12,28 +12,24 @@ const moveBall = ball => {
   ball.ballY += ball.vy;
 };
 
-const generateBallA = ({ width }) => {
+const generateBallLeft = ({ width }, vLeft, positionX) => {
   let newBall = {
-    ballX: width / 4,
+    ballX: (width / positionX),
     ballY: 50,
     ballRadius: 20,
-    vy: 3,
-    index,
+    vy: vLeft,
     color: "#cc641e"
   };
   game.ballArray.push(newBall);
-  index++;
 };
 
-const generateBallB = ({ width }) => {
+const generateBallRight = ({ width }, vRight) => {
   let newBall = {
     ballX: (width / 4) * 3,
     ballY: 50,
     ballRadius: 20,
-    vy: 3,
-    index,
+    vy: vRight,
     color: "#00441b"
   };
   game.ballArray.push(newBall);
-  index++;
 };

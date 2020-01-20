@@ -1,3 +1,5 @@
+
+
 let game = {
   idInterval: null,
   canvas: null,
@@ -14,7 +16,8 @@ let game = {
   fail: 0,
   isMobile: true,
   vertical: false,
-  horizontal: true
+  horizontal: true, 
+  level: 0
 };
 
 const init = () => {
@@ -25,20 +28,10 @@ const init = () => {
     width: window.innerWidth,
     height: window.innerHeight
   };
+  game.vertical ? game.canvas.style.background = 'rgba(255,194,153,1)' : game.canvas.style.background = 'linear-gradient(to right, rgba(255,194,153,1) 0%, rgba(255,194,153,1) 52%, rgba(186,255,216,1) 52%, rgba(186,255,216,1) 100%)'
   game.canvas.width = game.width;
   game.canvas.height = game.height;
 };
-let index = 0;
-
-let level1A = [0, 1, 1, 1, 0];
-let level1B = [1, 0, 0, 0, 0];
-
-let level2B = [1, 0, 0, 1, 0];
-let level2A = [0, 1, 1, 0, 1];
-
-let levelVert = [1, 0, 1, 1, 1, 0];
-let i = 0;
-let j = 0;
 
 const start = () => {
   controls(game);
@@ -58,37 +51,38 @@ const start = () => {
 };
 
 const gameVertical = () => {
-  if (game.frameCounter % 20 === 0) {
-    if (levelVert[j] === 1) {
-      generateBallA(game);
+  if (game.frameCounter % levelsVertical[game.level].fps === 0) {
+    if (levelsVertical[game.level].level[j] === 1) {
+      generateBallLeft(game, levelsVertical[game.level].vy, 2);
     }
     j++;
-    if (j === levelVert.length) {
+    if (j === levelsVertical[game.level].level.length) {
       j = 0;
     }
   }
 };
 
 const gameHorizontal = () => {
-  if (game.frameCounter % 20 === 0) {
-    if (level2B[j] === 1) {
-      generateBallA(game);
+  if (game.frameCounter % levels[game.level].fpsLeft === 0) {
+    if (levels[game.level].level1Left[j] === 1) {
+      generateBallLeft(game, levels[game.level].vLeft, 4);
     }
     j++;
-    if (j === level2B.length) {
+    if (j === levels[game.level].level1Left.length) {
       j = 0;
     }
   }
-  if (game.frameCounter % 40 === 0) {
-    if (level2A[i] === 1) {
-      generateBallB(game);
+  if (game.frameCounter % levels[game.level].fpsRight === 0) {
+    if (levels[game.level].level1Right[i] === 1) {
+      generateBallRight(game, levels[game.level].vRight);
     }
     i++;
-    if (i === level2A.length) {
+    if (i === levels[game.level].level1Right.length) {
       i = 0;
     }
   }
 };
+
 const mobileControls = () => {
   document.ontouchstart = e => {
     if (e.touches[0].clientX > 0 && e.touches[0].clientX < game.width / 2) {

@@ -10,21 +10,31 @@ const drawCollision = (
   ctx.stroke();
 };
 
-const createCollisions = ({ collisionArray, width, height }) => {
-  let newCollisionA = {
-    collisionX: width / 4,
-    collisionY: (height / 4) * 3,
-    collisionRadio: 30,
-    color: "#cc641e"
-  };
-  let newCollisionB = {
-    collisionX: (width / 4) * 3,
-    collisionY: (height / 4) * 3,
-    collisionRadio: 30,
-    color: "#00441b"
-  };
-  collisionArray.push(newCollisionA);
-  collisionArray.push(newCollisionB);
+const createCollisions = ({ collisionArray, width, height, vertical }) => {
+  if (vertical) {
+    let newCollision = {
+      collisionX: (width / 2) ,
+      collisionY: (height / 4) * 3,
+      collisionRadio: 30,
+      color: "#cc641e"
+    };
+    collisionArray.push(newCollision);
+  } else {
+    let newCollisionLeft = {
+      collisionX: width / 4,
+      collisionY: (height / 4) * 3,
+      collisionRadio: 30,
+      color: "#cc641e"
+    };
+    let newCollisionRight = {
+      collisionX: (width / 4) * 3,
+      collisionY: (height / 4) * 3,
+      collisionRadio: 30,
+      color: "#00441b"
+    };
+    collisionArray.push(newCollisionLeft);
+    collisionArray.push(newCollisionRight);
+  }
 };
 
 const isCollisionLeft = ({ ballArray, collisionArray }) => {
