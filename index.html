@@ -6,33 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CANVAS TEST</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
     <script src=src/collision.js></script>
     <script src=src/ball.js></script>
     <script src=src/levels/level.js> </script>
+    <script src=src/utils/config.js> </script>
     <script src=src/game.js> </script>
     <script src=src/init.js> </script>
 
     <title>Game</title>
 </head>
-<style>
-    html,body{
-        margin:0;
-        padding: 0;
-    }
-    .controls {
-        position:absolute;
-        top:50px;
-        left:50px;
-    }
-</style>
-
 <body>
     <div class='content'>
         <div class="controls">
-            <button id="start-button" class='btn'>START</button>
-            <button id="stop-button" class='btn'>STOP</button>
-            <div>PUNTOS: <span id='point'></span></div>
-            <div>FALLOS: <span id='fail'></span></div>
+            <div class='buttons'>
+                <button id="start-button" class='btn'>START</button>
+                <button id="stop-button" class='btn'>STOP</button>
+            </div>
+            <div class='scores'>
+                <div>PUNTOS: <span id='point'></span></div>
+                <div>FALLOS: <span id='fail'></span></div>
+            </div>
         </div>
         <canvas id="myCanvas" width="0" height="0">
     </div>

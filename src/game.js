@@ -1,25 +1,3 @@
-
-
-let game = {
-  idInterval: null,
-  canvas: null,
-  ctx: null,
-  fps: 60,
-  frameCounter: 0,
-  ballArray: [],
-  collisionArray: [],
-  keys: {
-    LEFT_KEY: 37,
-    RIGHT_KEY: 39
-  },
-  point: 0,
-  fail: 0,
-  isMobile: true,
-  vertical: false,
-  horizontal: true, 
-  level: 0
-};
-
 const init = () => {
   game = {
     ...game,
@@ -28,7 +6,7 @@ const init = () => {
     width: window.innerWidth,
     height: window.innerHeight
   };
-  game.vertical ? game.canvas.style.background = 'rgba(255,194,153,1)' : game.canvas.style.background = 'linear-gradient(to right, rgba(255,194,153,1) 0%, rgba(255,194,153,1) 52%, rgba(186,255,216,1) 52%, rgba(186,255,216,1) 100%)'
+  game.vertical ? game.canvas.style.background = '#ffc299' : game.canvas.style.background = 'linear-gradient(to right, #ffc299 0%, #ffc299 52%, #baffd8 52%, #baffd8 100%)'
   game.canvas.width = game.width;
   game.canvas.height = game.height;
 };
