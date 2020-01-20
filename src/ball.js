@@ -1,11 +1,6 @@
-let vy = 0.5;
-
-const drawBall = (ctx, { ballX, ballY, ballRadius, color }) => {
-  ctx.beginPath();
-  ctx.arc(ballX, ballY, ballRadius, 0, Math.PI * 2);
-  ctx.closePath();
-  ctx.fillStyle = color;
-  ctx.fill();
+const drawBall = (ctx, { ballX, ballY, ballWidth, ballHeight }) => {
+  let image = document.getElementById('source');
+  ctx.drawImage(image, ballX, ballY, ballWidth, ballHeight);
 };
 
 const moveBall = ball => {
@@ -14,22 +9,22 @@ const moveBall = ball => {
 
 const generateBallLeft = ({ width }, vLeft, positionX) => {
   let newBall = {
-    ballX: (width / positionX),
+    ballX: (width / positionX) - 20,
     ballY: 50,
-    ballRadius: 20,
-    vy: vLeft,
-    color: "#cc641e"
+    ballWidth: 40,
+    ballHeight: 40,
+    vy: vLeft
   };
   game.ballArray.push(newBall);
 };
 
 const generateBallRight = ({ width }, vRight) => {
   let newBall = {
-    ballX: (width / 4) * 3,
+    ballX: (width / 4) * 3 - 20,
     ballY: 50,
-    ballRadius: 20,
-    vy: vRight,
-    color: "#00441b"
+    ballWidth: 40,
+    ballHeight: 40,
+    vy: vRight
   };
   game.ballArray.push(newBall);
 };

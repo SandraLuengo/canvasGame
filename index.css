@@ -5,6 +5,9 @@ html,body{
     margin:0;
     padding: 0;
     font-family: 'Bangers', cursive;
+    background-image: url(https://image.freepik.com/free-vector/elegant-flamenco-dancer-flat-illustration_82574-7671.jpg);
+    background-size: 55%;
+    background-position: top;
 }
 .buttons, .scores {
     position: absolute;

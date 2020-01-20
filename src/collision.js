@@ -6,7 +6,7 @@ const drawCollision = (
   ctx.setLineDash([5, 15]);
   ctx.arc(collisionX, collisionY, collisionRadio, 0, Math.PI * 2);
   ctx.closePath();
-  ctx.strokeStyle = "red";
+  ctx.strokeStyle = "black";
   ctx.stroke();
 };
 
@@ -46,16 +46,16 @@ const isCollisionRight = ({ ballArray, collisionArray }) => {
 };
 
 const collision = (ball, collisionArray, position) => {
-  let ballTop = ball.ballY - ball.ballRadius;
-  let ballBottom = ball.ballY + ball.ballRadius;
+  let ballTop = ball.ballY;
+  let ballBottom = ball.ballY + ball.ballHeight;
   let collisionTop =
     collisionArray[position].collisionY -
     collisionArray[position].collisionRadio;
   let collisionBottom =
     collisionArray[position].collisionY +
     collisionArray[position].collisionRadio;
-  let ballRight = ball.ballX - ball.ballRadius;
-  let ballLeft = ball.ballX + ball.ballRadius;
+  let ballRight = ball.ballX ;
+  let ballLeft = ball.ballX + ball.ballWidth;
   let collisionRight =
     collisionArray[position].collisionX -
     collisionArray[position].collisionRadio;
