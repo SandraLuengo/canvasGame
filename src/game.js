@@ -6,7 +6,10 @@ const init = () => {
     width: window.innerWidth,
     height: window.innerHeight
   };
-  game.vertical ? game.canvas.style.background = '#ffc299' : game.canvas.style.background = 'linear-gradient(to right, #ffc299 0%, #ffc299 52%, #baffd8 52%, #baffd8 100%)'
+  game.vertical
+    ? (game.canvas.style.background = "#ffc299")
+    : (game.canvas.style.background =
+        "linear-gradient(to right, #ffc299 0%, #ffc299 52%, #baffd8 52%, #baffd8 100%)");
   game.canvas.width = game.width;
   game.canvas.height = game.height;
 };
@@ -67,8 +70,20 @@ const mobileControls = () => {
       if (isCollisionLeft(game)) {
         game.point++;
         document.getElementById("point").innerHTML = game.point;
+        document.querySelector(".pointLeft").innerHTML = "Ole!";
+        document.querySelector(".pointLeft").style.color = "black";
+        document.querySelector(".pointLeft").style.opacity = "1";
+        setTimeout(() => {
+          document.querySelector(".pointLeft").style.opacity = "0";
+        }, 500);
       } else {
         game.fail++;
+        document.querySelector(".pointLeft").innerHTML = "Wrong!";
+        document.querySelector(".pointLeft").style.color = "red";
+        document.querySelector(".pointLeft").style.opacity = "1";
+        setTimeout(() => {
+          document.querySelector(".pointLeft").style.opacity = "0";
+        }, 500);
         document.getElementById("fail").innerHTML = game.fail;
       }
     } else if (
@@ -78,8 +93,20 @@ const mobileControls = () => {
       if (isCollisionRight(game)) {
         game.point++;
         document.getElementById("point").innerHTML = game.point;
+        document.querySelector(".pointRight").innerHTML = "Perfect!";
+        document.querySelector(".pointRight").style.color = "black";
+        document.querySelector(".pointRight").style.opacity = "1";
+        setTimeout(() => {
+          document.querySelector(".pointRight").style.opacity = "0";
+        }, 500);
       } else {
         game.fail++;
+        document.querySelector(".pointRight").innerHTML = "Ups!";
+        document.querySelector(".pointRight").style.color = "red";
+        document.querySelector(".pointRight").style.opacity = "1";
+        setTimeout(() => {
+          document.querySelector(".pointRight").style.opacity = "0";
+        }, 500);
         document.getElementById("fail").innerHTML = game.fail;
       }
     }

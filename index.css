@@ -19,6 +19,19 @@ html,body{
 .scores {
     top: 60px;
 }
+.points {
+    position: absolute;
+    bottom: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    font-size: 2.3em;
+}
+
+.pointLeft, .pointRight {
+    opacity: 0;
+}
+
 #start-button{
     background: #ffc299;
     width: 86px;
