@@ -66,20 +66,28 @@ const gameHorizontal = () => {
 
 const mobileControls = () => {
   document.ontouchstart = e => {
-    if (e.touches[0].clientX > 0 && e.touches[0].clientX < game.width / 2) {
+    if (game.horizontal) {
+      if (e.touches[0].clientX > 0 && e.touches[0].clientX < game.width / 2) {
+        if (isCollisionLeft(game)) {
+          pointLeft();
+        } else {
+          failureLeft();
+        }
+      } else if (
+        e.touches[0].clientX > game.width / 2 &&
+        e.touches[0].clientX < game.width
+      ) {
+        if (isCollisionRight(game)) {
+          pointRight();
+        } else {
+          failureRight();
+        }
+      }
+    } else if (game.vertical) {
       if (isCollisionLeft(game)) {
         pointLeft();
       } else {
         failureLeft();
-      }
-    } else if (
-      e.touches[0].clientX > game.width / 2 &&
-      e.touches[0].clientX < game.width
-    ) {
-      if (isCollisionRight(game)) {
-        pointRight();
-      } else {
-        failureRight();
       }
     }
   };
