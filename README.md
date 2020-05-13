@@ -1,3 +1,3 @@
 ## Aprende a dar palmas
 
-### actualemente en  versión movil
+### actualmente solo en  versión movil 📱
