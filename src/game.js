@@ -13,9 +13,16 @@ const init = () => {
         "linear-gradient(to right, #ffc299 0%, #ffc299 52%, #baffd8 52%, #baffd8 100%)");
   game.canvas.width = game.width;
   game.canvas.height = game.height;
-  game.audio = new Audio(
-    "https://media-lab-pre-rtve.akamaized.net/proyectos/aula-flamenco/music/palmada.mp3"
-  );
+  game.audio = new Howl({
+    src: [
+      "https://media-lab-pre-rtve.akamaized.net/proyectos/aula-flamenco/music/palmada.mp3",
+    ],
+  });
+  // game.audio = new Howl({
+  //   urls: [
+  //     "https://media-lab-pre-rtve.akamaized.net/proyectos/aula-flamenco/music/palmada.mp3",
+  //   ],
+  // });
 };
 
 const start = () => {
