@@ -57,7 +57,7 @@ const gameVertical = () => {
 const mobileControls = () => {
   document.ontouchstart = (e) => {
     if (isCollisionLeft(game)) {
-      game.audio.play();
+      // game.audio.play();
       pointLeft();
     } else {
       failureLeft();
@@ -79,8 +79,17 @@ const drawAll = ({ ballArray, collisionArray }) => {
   ballArray.map((ball) => drawBall(ctx, ball));
   collisionArray.map((collision) => drawCollision(ctx, collision));
 };
-
+let caCollision = true;
 const moveAll = ({ ballArray }) => {
+  if (isCollisionLeft(game)) {
+    if (caCollision) {
+      caCollision = false;
+      game.audio.play();
+      setTimeout(() => {
+        caCollision = true;
+      }, 1000);
+    }
+  }
   ballArray.map((ball) => moveBall(ball));
 };
 
